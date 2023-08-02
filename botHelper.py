@@ -14,7 +14,7 @@ def input_error(func):
             return "Invalid input."
     return wrapper
 
-class Field:
+class Name:
     def __init__(self, value=None):
         self.value = value
 
@@ -24,10 +24,13 @@ class Field:
     def update(self, value):
         self.value = value
 
-class Name(Field):
-    pass
+class Phone:
+    def __init__(self, value=None):
+        self.value = value
 
-class Phone(Field):
+    def __str__(self):
+        return str(self.value)
+
     def update(self, value):
         if not value.isdigit():
             raise ValueError
@@ -35,7 +38,13 @@ class Phone(Field):
             raise ValueError
         self.value = value
 
-class Birthday(Field):
+class Birthday:
+    def __init__(self, value=None):
+        self.value = value
+
+    def __str__(self):
+        return str(self.value)
+
     def update(self, value):
         try:
             datetime.strptime(value, "%Y-%m-%d")
